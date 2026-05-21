@@ -1,0 +1,4 @@
+Drop your Illustrator works here (.jpg or .png files).
+
+Then update index.html to link to them:
+  <img src="images/illustrator/your-file.jpg" alt="Your work title">
