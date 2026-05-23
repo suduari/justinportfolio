@@ -178,6 +178,8 @@ nav {
 .btn-green:hover  { background: #00cc33; box-shadow: 6px 6px 0 #003d10; transform: translate(-2px,-2px); }
 .btn-outline { background: transparent; color: var(--pixel-cyan); border: 4px solid var(--pixel-cyan); box-shadow: 4px 4px 0 var(--pixel-cyan); }
 .btn-outline:hover { background: rgba(0,245,255,0.1); box-shadow: 6px 6px 0 var(--pixel-cyan); transform: translate(-2px,-2px); }
+.btn-yellow  { background: var(--pixel-yellow); color: var(--pixel-black); border: 4px solid #664400; box-shadow: 4px 4px 0 #664400; }
+.btn-yellow:hover  { background: #e6cf00; box-shadow: 6px 6px 0 #664400; transform: translate(-2px,-2px); }
 
 /* ---- SECTIONS ---- */
 section {
@@ -305,8 +307,103 @@ section {
   object-fit: cover; display: block;
   transition: transform 0.3s;
   image-rendering: auto;
+  position: relative;
+  z-index: 1;
+  filter: contrast(1.12) saturate(1.18) brightness(0.9);
+  box-shadow:
+    inset 0 0 28px rgba(0, 255, 65, 0.07),
+    2px 0 0 rgba(255, 0, 80, 0.18),
+    -2px 0 0 rgba(0, 245, 255, 0.18);
 }
 .gallery-item:hover .gallery-thumb img { transform: scale(1.05); }
+
+/* ---- CRT filter (gallery, lightbox, certificates) ---- */
+.gallery-thumb,
+.lightbox-img-wrap,
+.cert-card {
+  isolation: isolate;
+}
+
+.gallery-thumb::before,
+.lightbox-img-wrap::before,
+.cert-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.14) 2px,
+    rgba(0, 0, 0, 0.14) 4px
+  );
+  background-size: 100% 4px;
+  animation: crt-scanlines 10s linear infinite;
+}
+
+.gallery-thumb::before,
+.lightbox-img-wrap::before {
+  bottom: 0;
+}
+
+.cert-card::before {
+  aspect-ratio: 4 / 3;
+}
+
+.gallery-thumb::after,
+.lightbox-img-wrap::after,
+.cert-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 5;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 52%, rgba(0, 0, 0, 0.55) 100%),
+    linear-gradient(90deg, rgba(255, 0, 80, 0.06) 0%, transparent 42%, transparent 58%, rgba(0, 245, 255, 0.06) 100%),
+    linear-gradient(rgba(0, 255, 65, 0.03), rgba(0, 255, 65, 0.03));
+  mix-blend-mode: overlay;
+}
+
+.gallery-thumb::after,
+.lightbox-img-wrap::after {
+  bottom: 0;
+}
+
+.cert-card::after {
+  aspect-ratio: 4 / 3;
+}
+
+@keyframes crt-scanlines {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 4px; }
+}
+
+@keyframes crt-flicker {
+  0%, 100% { opacity: 1; }
+  92%      { opacity: 1; }
+  93%      { opacity: 0.96; }
+  94%      { opacity: 1; }
+}
+
+.gallery-thumb,
+.lightbox-img-wrap {
+  animation: crt-flicker 6s step-end infinite;
+}
+
+.lightbox-img-wrap img {
+  filter: contrast(1.12) saturate(1.18) brightness(0.9);
+  box-shadow:
+    inset 0 0 32px rgba(0, 255, 65, 0.08),
+    2px 0 0 rgba(255, 0, 80, 0.2),
+    -2px 0 0 rgba(0, 245, 255, 0.2);
+}
 
 .gallery-placeholder {
   width: 100%; height: 100%;
@@ -317,7 +414,7 @@ section {
 .placeholder-icon { font-size: 48px; }
 .placeholder-text { font-family: var(--font-pixel); font-size: 6px; color: #333; text-align: center; line-height: 2; }
 
-.sw-badge { position: absolute; top: 10px; right: 10px; font-family: var(--font-pixel); font-size: 6px; padding: 4px 8px; letter-spacing: 1px; z-index: 2; }
+.sw-badge { position: absolute; top: 10px; right: 10px; font-family: var(--font-pixel); font-size: 6px; padding: 4px 8px; letter-spacing: 1px; z-index: 6; }
 .sw-badge.ps { background: #001f5e; color: #4da6ff;             border: 2px solid #4da6ff; }
 .sw-badge.ai { background: #3d2000; color: var(--pixel-yellow); border: 2px solid var(--pixel-yellow); }
 
@@ -341,7 +438,13 @@ section {
   display: flex; align-items: center; justify-content: center;
   min-height: 200px;
 }
-.lightbox-img-wrap img { max-width: 100%; max-height: 60vh; object-fit: contain; display: block; image-rendering: auto; }
+.lightbox-img-wrap img {
+  max-width: 100%; max-height: 60vh;
+  object-fit: contain; display: block;
+  image-rendering: auto;
+  position: relative;
+  z-index: 1;
+}
 .lightbox-title { font-family: var(--font-pixel); font-size: 9px; color: var(--pixel-green); text-shadow: 0 0 8px var(--pixel-green); text-align: center; }
 .lightbox-close {
   font-family: var(--font-pixel); font-size: 8px;
@@ -350,6 +453,103 @@ section {
   padding: 10px 20px; cursor: pointer; transition: all 0.1s;
 }
 .lightbox-close:hover { background: rgba(255,0,110,0.15); transform: translate(-2px,-2px); box-shadow: 5px 5px 0 #660022; }
+
+/* ---- CERTIFICATES MODAL ---- */
+.cert-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 900;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+}
+.cert-modal.open { display: flex; }
+.cert-modal-panel {
+  background: var(--pixel-dark);
+  max-width: 960px;
+  width: 100%;
+  padding: 28px 24px 32px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.cert-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.cert-modal-title {
+  font-family: var(--font-pixel);
+  font-size: clamp(8px, 2vw, 12px);
+  color: var(--pixel-yellow);
+  text-shadow: 0 0 10px var(--pixel-yellow);
+}
+.cert-modal-intro {
+  font-family: var(--font-vt);
+  font-size: 20px;
+  color: var(--pixel-gray);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.cert-modal-close {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--pixel-pink);
+  background: transparent;
+  border: 3px solid var(--pixel-pink);
+  box-shadow: 3px 3px 0 #660022;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.cert-modal-close:hover {
+  background: rgba(255,0,110,0.15);
+  transform: translate(-2px,-2px);
+}
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+.cert-card {
+  position: relative;
+  background: var(--pixel-black);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: transform 0.1s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.cert-card:hover { transform: translate(-3px,-3px); }
+.cert-card img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  image-rendering: auto;
+  position: relative;
+  z-index: 1;
+  filter: contrast(1.12) saturate(1.18) brightness(0.9);
+  box-shadow:
+    inset 0 0 28px rgba(0, 255, 65, 0.07),
+    2px 0 0 rgba(255, 0, 80, 0.18),
+    -2px 0 0 rgba(0, 245, 255, 0.18);
+}
+.cert-card-label {
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--pixel-white);
+  padding: 10px 12px;
+  line-height: 1.6;
+  border-top: 3px solid #222;
+}
 
 /* ---- CONTACT ---- */
 .contact-box { display: inline-block; padding: 40px 60px; background: var(--pixel-dark); margin-bottom: 40px; max-width: 600px; width: 100%; }

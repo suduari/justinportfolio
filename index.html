@@ -48,6 +48,7 @@
 
   <div class="hero-btns">
     <a href="#projects" class="btn-pixel btn-green">▶ VIEW GALLERY</a>
+    <button type="button" class="btn-pixel btn-yellow" onclick="openCertificates()">🏆 CERTIFICATES</button>
     <a href="#contact"  class="btn-pixel btn-outline">✉ CONTACT ME</a>
   </div>
 </section>
@@ -424,7 +425,7 @@
       </div>
     </div>
 
-    <!-- ── ILLUSTRATOR WORK 1 ── -->
+    <!-- ── ILLUSTRATOR: LOGO (3) ── -->
     <div class="gallery-item pixel-border-yellow" data-type="ai" onclick="openLightbox(this)">
       <div class="gallery-thumb">
         <div class="sw-badge ai">Ai</div>
@@ -436,8 +437,93 @@
       </div>
     </div>
 
+    <div class="gallery-item pixel-border" data-type="ai" onclick="openLightbox(this)">
+      <div class="gallery-thumb">
+        <div class="sw-badge ai">Ai</div>
+        <img src="images/illustrator/logo/Screenshot%202026-05-22%20221647.png" alt="Logo Design">
+      </div>
+      <div class="gallery-caption">
+        <div class="gallery-caption-title">LOGO DESIGN #02</div>
+        <div class="gallery-caption-desc">Vector logo &amp; brand mark in Illustrator.</div>
+      </div>
+    </div>
+
+    <div class="gallery-item pixel-border-cyan" data-type="ai" onclick="openLightbox(this)">
+      <div class="gallery-thumb">
+        <div class="sw-badge ai">Ai</div>
+        <img src="images/illustrator/logo/Screenshot%202026-05-22%20221711.png" alt="Logo Design">
+      </div>
+      <div class="gallery-caption">
+        <div class="gallery-caption-title">LOGO DESIGN #03</div>
+        <div class="gallery-caption-desc">Vector logo &amp; brand mark in Illustrator.</div>
+      </div>
+    </div>
+
   </div><!-- /gallery-grid -->
 </section>
+
+<!-- ── CERTIFICATES MODAL ── -->
+<div class="cert-modal" id="certModal" onclick="closeCertificates(event)">
+  <div class="cert-modal-panel pixel-border-yellow" onclick="event.stopPropagation()">
+    <div class="cert-modal-header">
+      <span class="cert-modal-title"># TESDA_CERTIFICATES.DB</span>
+      <button type="button" class="cert-modal-close" onclick="closeCertificates()">✕ CLOSE</button>
+    </div>
+    <p class="cert-modal-intro">TESDA &amp; Microsoft training credentials — click any certificate to view full size.</p>
+    <div class="cert-grid">
+
+      <button type="button" class="cert-card pixel-border" onclick="openCertificateView(this)"
+        data-src="images/TESDA%20CERTIFICATE/Introduction%20to%20Visual%20Graphic%20Design.jpg"
+        data-title="INTRODUCTION TO VISUAL GRAPHIC DESIGN">
+        <img src="images/TESDA%20CERTIFICATE/Introduction%20to%20Visual%20Graphic%20Design.jpg" alt="Introduction to Visual Graphic Design">
+        <span class="cert-card-label">INTRO TO VISUAL GRAPHIC DESIGN</span>
+      </button>
+
+      <button type="button" class="cert-card pixel-border-cyan" onclick="openCertificateView(this)"
+        data-src="images/TESDA%20CERTIFICATE/Developing%20Design%20for%20a%20Logo.jpg"
+        data-title="DEVELOPING DESIGN FOR A LOGO">
+        <img src="images/TESDA%20CERTIFICATE/Developing%20Design%20for%20a%20Logo.jpg" alt="Developing Design for a Logo">
+        <span class="cert-card-label">DESIGN FOR A LOGO</span>
+      </button>
+
+      <button type="button" class="cert-card pixel-border-pink" onclick="openCertificateView(this)"
+        data-src="images/TESDA%20CERTIFICATE/Developing%20Design%20for%20Print%20Media.jpg"
+        data-title="DEVELOPING DESIGN FOR PRINT MEDIA">
+        <img src="images/TESDA%20CERTIFICATE/Developing%20Design%20for%20Print%20Media.jpg" alt="Developing Design for Print Media">
+        <span class="cert-card-label">DESIGN FOR PRINT MEDIA</span>
+      </button>
+
+      <button type="button" class="cert-card pixel-border" onclick="openCertificateView(this)"
+        data-src="images/TESDA%20CERTIFICATE/Developin%20Design%20for%20Product%20Packaging.jpg"
+        data-title="DEVELOPING DESIGN FOR PRODUCT PACKAGING">
+        <img src="images/TESDA%20CERTIFICATE/Developin%20Design%20for%20Product%20Packaging.jpg" alt="Developing Design for Product Packaging">
+        <span class="cert-card-label">PRODUCT PACKAGING</span>
+      </button>
+
+      <button type="button" class="cert-card pixel-border-cyan" onclick="openCertificateView(this)"
+        data-src="images/TESDA%20CERTIFICATE/Developing%20Design%20for%20User%20Experience.jpg"
+        data-title="DEVELOPING DESIGN FOR USER EXPERIENCE">
+        <img src="images/TESDA%20CERTIFICATE/Developing%20Design%20for%20User%20Experience.jpg" alt="Developing Design for User Experience">
+        <span class="cert-card-label">DESIGN FOR UX</span>
+      </button>
+
+      <button type="button" class="cert-card pixel-border-pink" onclick="openCertificateView(this)"
+        data-src="images/TESDA%20CERTIFICATE/Designing%20Booth%20and%20Product%20%26%20Window%20Display.jpg"
+        data-title="DESIGNING BOOTH AND PRODUCT &amp; WINDOW DISPLAY">
+        <img src="images/TESDA%20CERTIFICATE/Designing%20Booth%20and%20Product%20%26%20Window%20Display.jpg" alt="Designing Booth and Product & Window Display">
+        <span class="cert-card-label">BOOTH &amp; WINDOW DISPLAY</span>
+      </button>
+
+      <button type="button" class="cert-card pixel-border-yellow" onclick="openCertificateView(this)"
+        data-src="images/TESDA%20CERTIFICATE/Microsoft%20Cybersecurity%20Course%3B%20Security%2C%20Compliance%2C%20and%20Identity%20Fundamentals.jpg"
+        data-title="MICROSOFT CYBERSECURITY — SCI FUNDAMENTALS">
+        <img src="images/TESDA%20CERTIFICATE/Microsoft%20Cybersecurity%20Course%3B%20Security%2C%20Compliance%2C%20and%20Identity%20Fundamentals.jpg" alt="Microsoft Cybersecurity Course">
+        <span class="cert-card-label">MICROSOFT CYBERSECURITY</span>
+      </button>
+
+    </div>
+  </div>
+</div>
 
 <!-- ── LIGHTBOX ── -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">

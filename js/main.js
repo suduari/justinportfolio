@@ -122,10 +122,50 @@ function closeLightbox(e) {
   const lb = document.getElementById('lightbox');
   if (!e || e.target === lb || e.target.classList.contains('lightbox-close')) {
     lb.classList.remove('open');
-    document.body.style.overflow = '';
+    const certOpen = document.getElementById('certModal').classList.contains('open');
+    if (!certOpen) document.body.style.overflow = '';
   }
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') });
+  if (e.key !== 'Escape') return;
+  const certModal = document.getElementById('certModal');
+  const lightbox  = document.getElementById('lightbox');
+  if (lightbox.classList.contains('open')) {
+    closeLightbox({ target: lightbox });
+  } else if (certModal.classList.contains('open')) {
+    closeCertificates();
+  }
 });
+
+
+/* ---- Certificates ---- */
+function openCertificates() {
+  document.getElementById('certModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCertificates(e) {
+  const modal = document.getElementById('certModal');
+  if (e && e.target !== modal && !e.target.classList.contains('cert-modal-close')) return;
+  modal.classList.remove('open');
+  if (!document.getElementById('lightbox').classList.contains('open')) {
+    document.body.style.overflow = '';
+  }
+}
+
+function openCertificateView(btn) {
+  const src   = btn.dataset.src;
+  const title = btn.dataset.title;
+  const lb    = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbPh  = document.getElementById('lbPlaceholder');
+
+  document.getElementById('lightboxTitle').textContent = title;
+  lbImg.src = src;
+  lbImg.alt = title;
+  lbImg.style.display = 'block';
+  lbPh.style.display  = 'none';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
