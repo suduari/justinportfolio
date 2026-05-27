@@ -6,6 +6,100 @@
   <title>Justin S. Porcincula | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── RESUME SECTION ── */
+    #resume { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 8px;
+    }
+    @media (max-width: 768px) {
+      .resume-grid { grid-template-columns: 1fr; }
+    }
+
+    .resume-col { display: flex; flex-direction: column; gap: 24px; }
+
+    .resume-block {
+      background: var(--pixel-dark, #0d0d2e);
+      padding: 24px;
+      border: 2px solid var(--pixel-green, #00ff41);
+    }
+    .resume-block-title {
+      font-family: var(--font-pixel, 'Press Start 2P', monospace);
+      font-size: 9px;
+      color: var(--pixel-green, #00ff41);
+      text-shadow: 0 0 8px var(--pixel-green, #00ff41);
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .resume-entry { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px dashed #1e1e4a; }
+    .resume-entry:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+    .resume-entry-role {
+      font-family: var(--font-pixel, 'Press Start 2P', monospace);
+      font-size: 7px;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+    .resume-entry-period {
+      font-family: var(--font-pixel, 'Press Start 2P', monospace);
+      font-size: 6px;
+      color: var(--pixel-yellow, #ffe600);
+      margin-bottom: 4px;
+    }
+    .resume-entry-org {
+      font-family: var(--font-pixel, 'Press Start 2P', monospace);
+      font-size: 6px;
+      color: var(--pixel-cyan, #00f5ff);
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    .resume-entry-desc {
+      font-family: var(--font-mono, 'VT323', monospace);
+      font-size: 16px;
+      color: #aab;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .resume-entry-list {
+      font-family: var(--font-mono, 'VT323', monospace);
+      font-size: 16px;
+      color: #aab;
+      line-height: 1.7;
+      padding-left: 18px;
+      margin: 0;
+    }
+    .resume-entry-list li::marker { color: var(--pixel-green, #00ff41); }
+
+    .resume-skill-item { margin-bottom: 14px; }
+    .resume-skill-label {
+      font-family: var(--font-pixel, 'Press Start 2P', monospace);
+      font-size: 6px;
+      color: #ccd;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .resume-skill-pct { color: var(--pixel-cyan, #00f5ff); }
+
+    /* ── CYAN HERO BUTTON ── */
+    .btn-cyan {
+      border-color: var(--pixel-cyan, #00f5ff);
+      color: var(--pixel-cyan, #00f5ff);
+      text-shadow: 0 0 8px var(--pixel-cyan, #00f5ff);
+      box-shadow: 3px 3px 0 var(--pixel-cyan, #00f5ff);
+    }
+    .btn-cyan:hover {
+      background: var(--pixel-cyan, #00f5ff);
+      color: #000;
+      text-shadow: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -16,6 +110,7 @@
     <li><a href="#about">ABOUT</a></li>
     <li><a href="#skills">SKILLS</a></li>
     <li><a href="#projects">PROJECTS</a></li>
+    <li><a href="#resume">RESUME</a></li>
     <li><a href="#contact">CONTACT</a></li>
   </ul>
 </nav>
@@ -48,6 +143,7 @@
 
   <div class="hero-btns">
     <a href="#projects" class="btn-pixel btn-green">▶ VIEW GALLERY</a>
+    <a href="#resume" class="btn-pixel btn-cyan">📄 RESUME</a>
     <button type="button" class="btn-pixel btn-yellow" onclick="openCertificates()">🏆 CERTIFICATES</button>
     <a href="#contact"  class="btn-pixel btn-outline">✉ CONTACT ME</a>
   </div>
@@ -101,7 +197,7 @@
 
     <div class="about-text">
       <p>Hi! I'm <span class="highlight">Justin S. Porcincula</span>, a passionate Computer Science student who loves building and designing things.</p>
-      <p>Based in the <span class="accent">Philippines</span>, I combine coding with creative design — working in Photoshop and Illustrator alongside my development projects.</p>
+      <p>Based in the <span class="accent">Philippines 🇵🇭</span>, I combine coding with creative design — working in Photoshop and Illustrator alongside my development projects.</p>
       <p>When I'm not studying algorithms or debugging at midnight, I'm crafting digital art, posters, and vector illustrations.</p>
       <p>Currently seeking internships, collaborations, and new <span class="highlight">side quests</span>.</p>
       <div class="hp-bar-wrap">
@@ -537,6 +633,106 @@
   <div class="lightbox-title" id="lightboxTitle">WORK TITLE</div>
   <button class="lightbox-close" onclick="closeLightbox()">✕ CLOSE</button>
 </div>
+
+<!-- ===================== RESUME ===================== -->
+<section id="resume">
+  <div class="section-header"># RESUME.EXE</div>
+  <div class="section-rule"></div>
+
+  <div class="resume-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="resume-col">
+
+      <!-- EDUCATION -->
+      <div class="resume-block pixel-border">
+        <div class="resume-block-title">🎓 EDUCATION</div>
+
+        <div class="resume-entry">
+          <div class="resume-entry-role">Bachelor of Computer Science</div>
+          <div class="resume-entry-period">2025 – 2029</div>
+          <div class="resume-entry-org">📍 Mabini Colleges Incorporation, Philippines</div>
+          <p class="resume-entry-desc">Acquired essential Computer Science skills including programming fundamentals, problem-solving, logical thinking, and familiarity with key software and development tools.</p>
+        </div>
+
+        <div class="resume-entry">
+          <div class="resume-entry-role">Accountancy, Business &amp; Management</div>
+          <div class="resume-entry-period">2022 – 2025</div>
+          <div class="resume-entry-org">📍 Vinzons Pilot High School</div>
+          <p class="resume-entry-desc">Completed Senior High School with a specialization in Business, gaining knowledge in accounting, marketing, entrepreneurship, and financial management.</p>
+        </div>
+      </div>
+
+      <!-- PROFESSIONAL SKILLS -->
+      <div class="resume-block pixel-border-cyan">
+        <div class="resume-block-title" style="color:var(--pixel-cyan)">⚡ PROFESSIONAL SKILLS</div>
+
+        <div class="resume-skill-item">
+          <div class="resume-skill-label">Frontend Development <span class="resume-skill-pct">87%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:87%"></div></div>
+        </div>
+        <div class="resume-skill-item">
+          <div class="resume-skill-label">Backend Development <span class="resume-skill-pct">95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="resume-skill-item">
+          <div class="resume-skill-label">UI/UX Design <span class="resume-skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="resume-skill-item">
+          <div class="resume-skill-label">Project Management <span class="resume-skill-pct">95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+      </div>
+
+    </div><!-- /left col -->
+
+    <!-- RIGHT COLUMN -->
+    <div class="resume-col">
+
+      <!-- EXPERIENCE -->
+      <div class="resume-block pixel-border-yellow">
+        <div class="resume-block-title" style="color:var(--pixel-yellow)">💼 EXPERIENCE</div>
+
+        <div class="resume-entry">
+          <div class="resume-entry-role">Senior Web Developer</div>
+          <div class="resume-entry-period">2035 – Present</div>
+          <div class="resume-entry-org">📍 Johnny Sins Corp.</div>
+          <ul class="resume-entry-list">
+            <li>Developed responsive and mobile-optimized websites that improved UX and reduced load times.</li>
+            <li>Built and maintained dynamic web features using HTML, CSS, JavaScript, and modern frameworks.</li>
+            <li>Implemented UI/UX best practices that increased user engagement and improved navigation.</li>
+            <li>Integrated APIs and optimized website performance through efficient coding and debugging.</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <div class="resume-entry-role">Web Developer</div>
+          <div class="resume-entry-period">2025 – 2029</div>
+          <div class="resume-entry-org">📍 Mabini Colleges Incorporation</div>
+          <ul class="resume-entry-list">
+            <li>Developed marketing programs across platforms — logos, brochures, infographics, and ads.</li>
+            <li>Managed up to 5 concurrent projects under pressure.</li>
+            <li>Created 4+ design presentations and proposals monthly for clients and account managers.</li>
+          </ul>
+        </div>
+
+        <div class="resume-entry">
+          <div class="resume-entry-role">Junior — Basic Computer</div>
+          <div class="resume-entry-period">2021 – 2023</div>
+          <div class="resume-entry-org">📍 Vinzons Pilot High School</div>
+          <ul class="resume-entry-list">
+            <li>Learned fundamentals of computer hardware and software.</li>
+            <li>Acquired skills in computer assembly and core functions.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div><!-- /right col -->
+
+  </div><!-- /resume-grid -->
+</section><!-- /Resume Section -->
 
 <!-- ===================== CONTACT ===================== -->
 <section id="contact">
